@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Conversor";
+}
+
+    <div class="text-center">
+        <h1 class="display-4">WebConversorMoneda</h1>
+
+        <form method="post" asp-action="Convertir">
+
+            <label>De:</label>
+            <select name="de">
+                @foreach (var val in Enum.GetValues(typeof(WebConversorMoneda.Controllers.Conversion)))
+                {
+                    <option value="@val">@val</option>
+                }
+            </select>
+
+            <label>A:</label>
+            <select name="a">
+                @foreach (var val in Enum.GetValues(typeof(WebConversorMoneda.Controllers.Conversion)))
+                {
+                    <option value="@val">@val</option>
+                }
+            </select>
+
+            <input type="number" step="0.5" name="cantidad" min="0" value="1" />
+
+            <input type="submit" value="Enviar" />
+        </form>
+
+        @if (Model != null)
+        {
+            <h1>@Model</h1>
+        }
+
+           <p></p>
+           <h1>No pude Cambiar el signo Monetario😅😅😅</h1>
+    </div>
+
